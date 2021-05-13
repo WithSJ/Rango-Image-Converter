@@ -36,5 +36,20 @@ def read_ppm(filename):
     return width,height,img
 
 
-def read_png(filename):
-    pass
+def read_png(_filename):
+    """ Read PNG file data.
+
+    Args:
+        _filename (string): Image file name or path with there .png extention
+
+    Returns:
+        [tuple]: Width,Height,Image,Info
+    """
+    img = list()
+
+    read_img = png.Reader(filename=_filename)
+    width,height,rows,info = read_img.read()
+    for row in rows:
+        img.append(tuple(row))
+
+    return width,height,img,info
