@@ -10,19 +10,20 @@ parser.add_argument(
     help="[Output] Image file with there extension example image.png"
     )
 
-
 args = parser.parse_args()
 
 
 IMG = list()
 WIDTH = int()
 HEIGHT = int()
-COLOR_RANGE = int()
-if(args.Input.split('.')[1] in ("ppm","PPM")):
-    with open(args.Input,"r") as input_file:
+
+
+def read_ppm(filename):
+    with open(filename,"r") as input_file:
         file_lines = input_file.readlines()
         for inline in file_lines:
             if "P3" in inline:
+                global WIDTH,HEIGHT
                 WIDTH,HEIGHT = inline.split()[1:]        
                 WIDTH,HEIGHT = int(WIDTH),int(HEIGHT)
                 file_lines.remove(inline)
@@ -32,13 +33,18 @@ if(args.Input.split('.')[1] in ("ppm","PPM")):
         for row in file_lines[1:]:
             IMG.append(tuple(map(eval,row.split())))
 
-
-
-             
-if args.Output.split(".")[1] in ("png","PNG"):
+def write_png(filename):
     import png
 
-    with open(args.Output, 'wb') as out_img:
+    with open(filename, 'wb') as out_img:
         write_png = png.Writer(WIDTH, HEIGHT, greyscale=False)
         write_png.write(out_img, IMG)
+
+
+
+if(args.Input.split('.')[1] in ("ppm","PPM")):
+    read_ppm(args.Input)
+             
+if args.Output.split(".")[1] in ("png","PNG"):
+    write_png(args.Output)
 
