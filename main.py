@@ -24,8 +24,8 @@ def read_ppm(filename):
         for inline in file_lines:
             if "P3" in inline:
                 global WIDTH,HEIGHT
-                WIDTH,HEIGHT = inline.split()[1:]        
-                WIDTH,HEIGHT = int(WIDTH),int(HEIGHT)
+                WIDTH,HEIGHT = map(eval,inline.split()[1:])
+                
                 file_lines.remove(inline)
             if "#" in inline:
                 file_lines.remove(inline)
