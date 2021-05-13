@@ -9,6 +9,6 @@ Rango Image Converter use to covert any image file in other image format.
 
 -i Input image path with extention
 
--o Imgae name with extention for Output
+-o Image name with extention for Output
 
 extention is need for input & output it automatically converts image according to extention.
