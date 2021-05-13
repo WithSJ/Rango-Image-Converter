@@ -21,4 +21,19 @@ def write_png(filename,width,height,image,_greyscale=False):
         write_png.write(out_img, image)
 
 def write_ppm(filename,width,height,image):
-    pass
+    """ Write PPM image file.
+
+    Args:
+        filename (string): Image file name with there .ppm extention
+        width (int): Width of image
+        height (int): Height of image
+        image (list): Image data contain image rows.
+    """
+    with open(filename,"w") as out_img:
+        out_img.write(f"P3 {width} {height}\n255\n")
+        for row in image:
+            for ele in row:
+                out_img.write(f"{ele} ")
+            out_img.write("\n")
+        
+        
