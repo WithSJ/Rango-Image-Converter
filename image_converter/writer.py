@@ -36,4 +36,14 @@ def write_ppm(filename,width,height,image):
                 out_img.write(f"{ele} ")
             out_img.write("\n")
         
-        
+
+def write_jpg(filename,width,height,image):
+    """ Write jpg or jpeg file
+
+    Args:
+        filename (string): filename with .jpg or .jpeg extention.
+        width (int): size of coloumns
+        height (int): size of row
+        image (list): list contain rows in tupple
+    """
+    pass

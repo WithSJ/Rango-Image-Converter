@@ -53,3 +53,18 @@ def read_png(_filename):
         img.append(tuple(row))
 
     return width,height,img,info
+
+def read_jpg(filename):
+    """ Read jpg or jpeg files data.
+
+    Args:
+        filename (string): filename with .jpg or .jpeg extention.
+
+    Returns:
+        [tupple]: Width,Height,Image data.
+    """
+    width = int()
+    height = int()
+    img = list()
+
+    return width,height,img
